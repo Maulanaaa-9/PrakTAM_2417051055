@@ -7,10 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.example.praktam_2417051055.ui.HomeScreen
 import com.example.praktam_2417051055.ui.theme.PrakTAM_2417051055Theme
 
 class MainActivity : ComponentActivity() {
@@ -20,29 +18,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             PrakTAM_2417051055Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    HomeScreenWrapper(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Halo, saya Maulana Abdillahul Fattah dengan NPM 2417051055 siap belajar Compose!",
-
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PrakTAM_2417051055Theme {
-        Greeting("Android")
+@androidx.compose.runtime.Composable
+fun HomeScreenWrapper(modifier: Modifier = Modifier) {
+    androidx.compose.foundation.layout.Box(modifier = modifier) {
+        HomeScreen()
     }
 }
