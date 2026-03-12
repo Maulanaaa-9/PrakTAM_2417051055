@@ -27,7 +27,7 @@ fun HomeScreen() {
         contentPadding = PaddingValues(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(AnimeSource.dummyAnimes) { anime ->
+        items(AnimeSource.dummyAnime) { anime ->
             AnimeCard(anime = anime)
         }
     }
