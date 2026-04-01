@@ -62,7 +62,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DaftarAnimeScreen() {
-    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        containerColor = MaterialTheme.colorScheme.background
+    ) { innerPadding ->
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -74,7 +77,7 @@ fun DaftarAnimeScreen() {
                 Text(
                     text = "Rekomendasi Populer",
                     style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
                 LazyRow(
@@ -89,7 +92,7 @@ fun DaftarAnimeScreen() {
                 Text(
                     text = "Daftar Anime",
                     style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 12.dp)
                 )
             }
@@ -106,6 +109,9 @@ fun AnimeCardSmall(anime: Anime) {
     Card(
         modifier = Modifier.width(140.dp),
         shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column {
@@ -120,8 +126,8 @@ fun AnimeCardSmall(anime: Anime) {
             Text(
                 text = anime.title,
                 modifier = Modifier.padding(8.dp),
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onSurface,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -136,6 +142,9 @@ fun AnimeCardLarge(anime: Anime) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
         Column {
@@ -155,7 +164,7 @@ fun AnimeCardLarge(anime: Anime) {
                     Icon(
                         imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                         contentDescription = null,
-                        tint = if (isFavorite) Color.Red else Color.White
+                        tint = if (isFavorite) MaterialTheme.colorScheme.primary else Color.White
                     )
                 }
             }
@@ -163,8 +172,8 @@ fun AnimeCardLarge(anime: Anime) {
             Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = anime.title,
-                    style = MaterialTheme.typography.headlineSmall,
-                    fontWeight = FontWeight.Bold
+                    style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
@@ -174,8 +183,8 @@ fun AnimeCardLarge(anime: Anime) {
                 )
                 Text(
                     text = "Rating: ${anime.rating}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.SemiBold,
+                    style = MaterialTheme.typography.bodySmall,
+                    fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.height(12.dp))
@@ -184,7 +193,10 @@ fun AnimeCardLarge(anime: Anime) {
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text(text = "Tambahkan ke Watchlist")
+                    Text(
+                        text = "Tambahkan ke Watchlist",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
                 }
             }
         }
