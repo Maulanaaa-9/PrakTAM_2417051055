@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 
 data class Anime(
     val title: String,
+    val description: String,
     val rating: Double,
     val episodes: Int,
     val season: String,
